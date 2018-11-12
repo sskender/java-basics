@@ -42,19 +42,34 @@ public class SimpleHashtable<K, V> {
     /**
      * Size of the table will be integer with this characteristics:
      * exponent of 2
-     * smallest number which is greater than @param n
+     * smallest number which is greater than @param x
+     *
+     * This supports only 32-bit values.
+     *
+     * Source:
+     * https://stackoverflow.com/questions/364985/algorithm-for-finding-the-smallest-power-of-two-thats-greater-or-equal-to-a-giv
      * <p>
      * Example:
      * calculateTableSize(3) = 4
      * calculateTableSize(4) = 4
      * calculateTableSize(5) = 8
      *
-     * @param n desired number of slots
+     * @param x desired number of slots
      * @return calculated table size
      */
-    final int calculateTableSize(int n) throws IllegalArgumentException {
-        // TODO
-        return SimpleHashtable.DEFAULT_SIZE;
+    public final int calculateTableSize(int x) throws IllegalArgumentException {
+        if (x < 0) {
+            throw new IllegalArgumentException("Size can not be less than zero");
+        }
+
+        x--;
+        x |= x >> 1;
+        x |= x >> 2;
+        x |= x >> 4;
+        x |= x >> 8;
+        x |= x >> 16;
+
+        return x + 1;
     }
 
 

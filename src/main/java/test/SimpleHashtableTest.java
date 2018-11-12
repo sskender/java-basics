@@ -5,7 +5,19 @@ import org.junit.Test;
 
 public class SimpleHashtableTest {
 
-    SimpleHashtable<String, Integer> examMarks = new SimpleHashtable<>(2);
+    SimpleHashtable<String, Integer> examMarks = new SimpleHashtable<>(50);
+
+    @Test
+    public void testTableSizeFunction() {
+        assert examMarks.calculateTableSize(2) == 2;
+        assert examMarks.calculateTableSize(3) == 4;
+        assert examMarks.calculateTableSize(4) == 4;
+        assert examMarks.calculateTableSize(7) == 8;
+        assert examMarks.calculateTableSize(33) == 64;
+        assert examMarks.calculateTableSize(2000) == 2048;
+        assert examMarks.calculateTableSize(4096) == 4096;
+        assert examMarks.calculateTableSize(4097) == 8192;
+    }
 
     @Test
     public void testEmpty() {
