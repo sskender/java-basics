@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class SimpleHashtableTest {
 
-    SimpleHashtable<String, Integer> examMarks = new SimpleHashtable<>(50);
+    SimpleHashtable<String, Integer> examMarks = new SimpleHashtable<>(2);
 
     @Test
     public void testTableSizeFunction() {
@@ -113,6 +113,17 @@ public class SimpleHashtableTest {
         assert !examMarks.containsKey("Ivana");
         assert examMarks.containsKey("Kristina");
         assert examMarks.size() == 3;
+    }
+
+    @Test
+    public void testToString() {
+        examMarks.put("Ivana", 2);
+        examMarks.put("Ante", 2);
+        examMarks.put("Jasna", 2);
+        examMarks.put("Kristina", 5);
+        examMarks.put("Ivana", 5);
+        System.out.println(examMarks.toString());
+        assert true;
     }
 
 }

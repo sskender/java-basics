@@ -261,12 +261,24 @@ public class SimpleHashtable<K, V> {
     /**
      * Return nice visual representation of the table.
      *
-     * @return
+     * @return whole table in one String
      */
     @Override
     public String toString() {
-        // TODO
-        return super.toString();
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < this.table.length; i++) {
+            TableEntry<K, V> temp = this.table[i];
+
+            if (temp != null) {
+                sb.append(i)
+                        .append(") ")
+                        .append(temp.toString())
+                        .append("\n");
+            }
+        }
+
+        return sb.toString();
     }
 
 
@@ -318,10 +330,27 @@ public class SimpleHashtable<K, V> {
         }
 
 
+        /**
+         * Return nice visual representation of slot and its linked slots.
+         *
+         * @return whole slot in one String
+         */
         @Override
         public String toString() {
-            // TODO
-            return super.toString();
+            StringBuilder sb = new StringBuilder();
+
+            sb.append("(")
+                    .append(this.key.toString())
+                    .append(" : ")
+                    .append(this.value.toString())
+                    .append(")");
+
+            if (next != null) {
+                sb.append(" -> ")
+                        .append(next.toString());
+            }
+
+            return sb.toString();
         }
 
 
