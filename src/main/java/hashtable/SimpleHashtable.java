@@ -14,7 +14,7 @@ package hashtable;
 public class SimpleHashtable<K, V> {
 
 
-    public static final int DEFAULT_SIZE = 16;
+    private static final int DEFAULT_SIZE = 16;
     private TableEntry<K, V>[] table;
     private int size;
 
