@@ -22,8 +22,9 @@ public class SimpleHashtable<K, V> {
     /**
      * If custom size not specified, table of size DEFAULT_SIZE is be created.
      */
+    @SuppressWarnings("unchecked")
     public SimpleHashtable() {
-        this.table = new TableEntry[SimpleHashtable.DEFAULT_SIZE];
+        this.table = (TableEntry<K, V>[]) new TableEntry[SimpleHashtable.DEFAULT_SIZE];
         this.size = 0;
     }
 
@@ -33,8 +34,9 @@ public class SimpleHashtable<K, V> {
      *
      * @param numberOfSlots wanted table size
      */
+    @SuppressWarnings("unchecked")
     public SimpleHashtable(int numberOfSlots) {
-        this.table = new TableEntry[calculateTableSize(numberOfSlots)];
+        this.table = (TableEntry<K, V>[]) new TableEntry[calculateTableSize(numberOfSlots)];
         this.size = 0;
     }
 
