@@ -1,2 +1,2 @@
-# java-impl
-Data structures and algorithms implemented in Java
+# java-basic
+Java basics in a nutshell
